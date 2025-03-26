@@ -58,7 +58,7 @@ function App() {
 
       <footer className="border-t border-surface-200 dark:border-surface-700 py-6 mt-10">
         <div className="container mx-auto px-4 text-center text-surface-500 dark:text-surface-400 text-sm">
-          <p>© {new Date().getFullYear()} NumTable. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} NumTable. All rights reserved to Apper.</p>
         </div>
       </footer>
     </div>
