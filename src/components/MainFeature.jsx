@@ -14,12 +14,12 @@ const MainFeature = () => {
 
   // Generate table data when inputs change
   useEffect(() => {
-    if (number && !isNaN(number) && number > 0) {
+    if (number && !isNaN(number) && number > 0 && number <= 10) {
       generateTable()
       calculateNumberProperties()
       setError('')
-    } else if (number && (isNaN(number) || number <= 0)) {
-      setError('Please enter a positive number')
+    } else if (number && (isNaN(number) || number <= 0 || number > 10)) {
+      setError('Please enter a number between 1 and 10')
       setTableData([])
       setNumberProperties(null)
     }
@@ -106,7 +106,16 @@ const MainFeature = () => {
 
   const handleNumberChange = (e) => {
     const value = e.target.value
-    setNumber(value)
+    
+    // Only allow values between 1 and 10
+    if (value === '' || (parseInt(value) >= 1 && parseInt(value) <= 10)) {
+      setNumber(value)
+      if (value !== '' && (parseInt(value) < 1 || parseInt(value) > 10)) {
+        setError('Please enter a number between 1 and 10')
+      } else {
+        setError('')
+      }
+    }
   }
 
   const handleRangeChange = (type, value) => {
@@ -134,16 +143,17 @@ const MainFeature = () => {
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium mb-2 text-surface-700 dark:text-surface-300">
-              Enter a Number
+              Enter a Number (1-10)
             </label>
             <div className="relative">
               <input
                 type="number"
                 value={number}
                 onChange={handleNumberChange}
-                placeholder="Enter a positive number"
-                className="input pl-10"
+                placeholder="Enter a number between 1-10"
+                className={`input pl-10 ${error ? 'border-accent focus:ring-accent' : ''}`}
                 min="1"
+                max="10"
               />
               <Calculator className="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400" size={18} />
             </div>
@@ -350,7 +360,7 @@ const MainFeature = () => {
           <div className="mb-4">
             <Calculator size={48} className="mx-auto opacity-30" />
           </div>
-          <p className="text-lg">Enter a number to generate tables</p>
+          <p className="text-lg">Enter a number between 1 and 10 to generate tables</p>
         </motion.div>
       )}
     </div>
