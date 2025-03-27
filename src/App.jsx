@@ -27,10 +27,10 @@ function App() {
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl">
-              N
+              T
             </div>
             <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
-              NumTable
+              Tables
             </h1>
           </div>
           
@@ -58,7 +58,7 @@ function App() {
 
       <footer className="border-t border-surface-200 dark:border-surface-700 py-6 mt-10">
         <div className="container mx-auto px-4 text-center text-surface-500 dark:text-surface-400 text-sm">
-          <p>© {new Date().getFullYear()} NumTable. All rights reserved to Apper.</p>
+          <p>© {new Date().getFullYear()} Tables. All rights reserved to Apper.</p>
         </div>
       </footer>
     </div>
